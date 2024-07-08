@@ -1,9 +1,20 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import SearchSec from "./_components/SearchSec";
+import TemplateSec from "./_components/TemplateSec";
 
 const page = () => {
+  const [userSearchInput, setUserSearchInput] = useState<string>();
+
   return (
     <div>
-      <h1>Dashboard</h1>
+      {/* Search Section */}
+      <SearchSec onSearchInput={(value: string) => setUserSearchInput(value)} />
+      {/* Search Section */}
+
+      {/* Template Section */}
+      <TemplateSec userSearchInput={userSearchInput} />
+      {/* Template Section */}
     </div>
   );
 };
