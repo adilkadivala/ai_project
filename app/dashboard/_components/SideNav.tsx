@@ -2,7 +2,6 @@
 import { FileClock, Home, Settings, WalletCards } from "lucide-react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import React, { useEffect } from "react";
 
 const SideNav = () => {
   const MenuList = [
@@ -29,9 +28,6 @@ const SideNav = () => {
   ];
 
   const path = usePathname();
-  useEffect(() => {
-    console.log(path);
-  }, []);
 
   return (
     <div className="h-screen p-5 shadow-sm border bg-white">
@@ -45,7 +41,9 @@ const SideNav = () => {
       <div className="mt-3">
         {MenuList.map((menu, index) => (
           <div
-            className={`flex gap-2 mb-2 p-3 hover:bg-primary hover:text-white rounded-lg cursor-pointer items-center ${path == menu.path && "bg-primary text-white"}`}
+            className={`flex gap-2 mb-2 p-3 hover:bg-primary hover:text-white rounded-lg cursor-pointer items-center ${
+              path == menu.path && "bg-primary text-white"
+            }`}
             key={index}
           >
             <menu.icon className="h-6 w-6" />
