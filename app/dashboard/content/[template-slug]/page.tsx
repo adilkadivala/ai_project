@@ -6,6 +6,8 @@ import Templates from "@/app/(data)/Templates";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { chatSession } from "@/utils/Aimodel";
+import { useState } from "react";
 
 interface PROPS {
   params: {
@@ -14,11 +16,24 @@ interface PROPS {
 }
 
 const CreateNewContent = (props: PROPS) => {
+  const [loading, setLoading] = useState(false);
+  const [aiOutPut, setAiOutPut] = useState<string>("");
+
   const selectedTemplate: TEMPLATE | undefined = Templates?.find(
     (item) => item.slug == props.params["template-slug"]
   );
 
-  const generateAIContent = (formdata: any) => {};
+  const generateAIContent = async (formdata: any) => {
+    setLoading(true);
+
+    const SelectedPrompt = selectedTemplate?.aiPrompt;
+
+    const finelAiPrompt = JSON.stringify(formdata) + "," + SelectedPrompt;
+    const result = await chatSession.sendMessage(finelAiPrompt);
+    console.log(result.response.text());
+    setAiOutPut(result.response.text());
+    setLoading(false);
+  };
 
   return (
     <div className="p-5">
@@ -31,13 +46,14 @@ const CreateNewContent = (props: PROPS) => {
         {/* from section */}
         <FromSection
           selectedTemplate={selectedTemplate}
-          userFormInput={(v: any) => console.log(v)}
+          userFormInput={(v: any) => generateAIContent(v)}
+          loading={loading}
         />
         {/* from section */}
 
         {/* Output  section */}
         <div className="col-span-2">
-          <OutPutSection />
+          <OutPutSection aiOutPut={aiOutPut} />
         </div>
         {/* Output  section */}
       </div>
