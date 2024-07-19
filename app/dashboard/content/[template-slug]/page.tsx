@@ -46,9 +46,9 @@ const CreateNewContent = (props: PROPS) => {
   const SaveInDb = async (formData: any, slug: any, aiResp: string) => {
     const result = await db.insert(AIOutput).values({
       formData: formData,
-      templateSlug: slug,
+      templateSlug: slug ?? "",
       aiResponse: aiResp,
-      createdBy: user?.primaryEmailAddress?.emailAddress,
+      createdBy: user?.primaryEmailAddress?.emailAddress ?? "",
       createdAt: moment().format("DD/MM/YYYY"),
     });
     console.log(result);
