@@ -56,7 +56,7 @@ const SideNav = () => {
         ))}
       </div>
 
-      <div className="absolute bottom-10 w-full left-0">
+      <div className="absolute bottom-10 w-full left-0 px-2">
         <UserTrack />
       </div>
     </div>

@@ -7,11 +7,13 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { chatSession } from "@/utils/Aimodel";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { db } from "@/utils/db";
 import { AIOutput } from "@/utils/schema";
 import { useUser } from "@clerk/nextjs";
 import moment from "moment";
+import { TotalUsageContext } from "@/app/(context)/TotalUsageContext";
+import { useRouter } from "next/navigation";
 
 interface PROPS {
   params: {
@@ -22,8 +24,17 @@ interface PROPS {
 const CreateNewContent = (props: PROPS) => {
   const [loading, setLoading] = useState(false);
   const [aiOutPut, setAiOutPut] = useState<string>("");
+  const router = useRouter();
 
   const { user } = useUser();
+
+  const { totalUsage, setTotalUsage } = useContext(TotalUsageContext);
+
+  if (totalUsage >= 10000) {
+    console.log("Please Upgrade");
+    router.push('/dashboard/billing')
+    return;
+  }
 
   const selectedTemplate: TEMPLATE | undefined = Templates?.find(
     (item) => item.slug == props.params["template-slug"]
