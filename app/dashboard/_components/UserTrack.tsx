@@ -25,13 +25,12 @@ function UserTrack() {
       total += element.aiResponse.length;
     });
     setTotalUsage(total);
-    console.log(total);
   };
 
   const getData = async () => {
     if (!user) return;
 
-    const result: HISTORY[] = await db
+    const result: HISTORY[] | any = await db
       .select()
       .from(AIOutput)
       .where(eq(AIOutput.createdBy, user?.primaryEmailAddress?.emailAddress));
