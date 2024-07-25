@@ -12,7 +12,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-
 import { TEMPLATE } from "../_components/TemplateSec";
 
 export interface HISTORY {
@@ -45,7 +44,9 @@ async function History() {
   const HistoryList: HISTORY[] | any = await db
     .select()
     .from(AIOutput)
-    .where(eq(AIOutput.createdBy, user?.primaryEmailAddress?.emailAddress))
+    .where(
+      eq(AIOutput.createdBy, user?.primaryEmailAddress?.emailAddress || "")
+    )
     .orderBy(desc(AIOutput.id));
 
   const getTemplateName = (slug: string) => {
