@@ -5,9 +5,14 @@ import React, { useState } from "react";
 import axios from "axios";
 import Razorpay from "razorpay";
 import { Loader2Icon } from "lucide-react";
+import { db } from "@/utils/db";
+import { useUser } from "@clerk/nextjs";
+import { userSubscription } from "@/utils/schema";
+import moment from "moment";
 
 const billing = () => {
   const [loading, setLoading] = useState(false);
+  const { user } = useUser();
 
   const createSubscription = () => {
     setLoading(true);
@@ -31,6 +36,9 @@ const billing = () => {
 
       handler: async (res: any) => {
         console.log(res);
+        if (res) {
+          saveSubscriptionOptions(res?.razorpay_payment_id);
+        }
         setLoading(false);
       },
     };
@@ -38,6 +46,20 @@ const billing = () => {
     // @ts-ignore
     const rzp = new window.Razorpay(options);
     rzp.open();
+  };
+
+  const saveSubscriptionOptions = async (paymentId: string) => {
+    const result = await db.insert(userSubscription).values({
+      email: user?.primaryEmailAddress?.emailAddress,
+      userName: user?.fullName,
+      active: true,
+      paymentId: paymentId,
+      joinDate: moment().format("DD/MM/YYYY"),
+    });
+
+    if (result) {
+      window.location.reload();
+    }
   };
 
   return (
