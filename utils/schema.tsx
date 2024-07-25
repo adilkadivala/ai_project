@@ -9,7 +9,7 @@ export const AIOutput = pgTable("aiOutput", {
   createdAt: varchar("createdAt"),
 });
 
-export const userSubscription = pgTable("userSubscription", {
+export const UserSubscription = pgTable("userSubscription", {
   id: serial("id").primaryKey(),
   email: varchar("email"),
   userName: varchar("userName"),

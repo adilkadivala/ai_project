@@ -14,6 +14,8 @@ import { useUser } from "@clerk/nextjs";
 import moment from "moment";
 import { TotalUsageContext } from "@/app/(context)/TotalUsageContext";
 import { useRouter } from "next/navigation";
+import { UserSubscriptionContext } from "@/app/(context)/UserSubscriptionContext";
+import { UpdateCreditUsageContext } from "@/app/(context)/UpdateCreditUsageContxt";
 
 interface PROPS {
   params: {
@@ -29,10 +31,16 @@ const CreateNewContent = (props: PROPS) => {
   const { user } = useUser();
 
   const { totalUsage, setTotalUsage } = useContext(TotalUsageContext);
+  const { userSubscription, setUserSubscription } = useContext(
+    UserSubscriptionContext
+  );
+  const { updateUsageCredit, setUpdateUsageCredit } = useContext(
+    UpdateCreditUsageContext
+  );
 
-  if (totalUsage >= 10000) {
+  if (totalUsage >= 10000 && !userSubscription) {
     console.log("Please Upgrade");
-    router.push('/dashboard/billing')
+    router.push("/dashboard/billing");
     return;
   }
 
@@ -52,6 +60,7 @@ const CreateNewContent = (props: PROPS) => {
     setAiOutPut(result?.response.text());
     await SaveInDb(formdata, selectedTemplate?.slug, result?.response.text());
     setLoading(false);
+    setUpdateUsageCredit(Date.now());
   };
 
   const SaveInDb = async (formData: any, slug: any, aiResp: string) => {

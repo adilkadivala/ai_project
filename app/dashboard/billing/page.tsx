@@ -1,18 +1,21 @@
 "use client";
-
 import { Button } from "@/components/ui/button";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import Razorpay from "razorpay";
 import { Loader2Icon } from "lucide-react";
 import { db } from "@/utils/db";
 import { useUser } from "@clerk/nextjs";
-import { userSubscription } from "@/utils/schema";
+import { UserSubscription } from "@/utils/schema";
 import moment from "moment";
+import { UserSubscriptionContext } from "@/app/(context)/UserSubscriptionContext";
 
 const billing = () => {
   const [loading, setLoading] = useState(false);
   const { user } = useUser();
+  const { userSubscription, setUserSubscription } = useContext(
+    UserSubscriptionContext
+  );
 
   const createSubscription = () => {
     setLoading(true);
@@ -49,7 +52,7 @@ const billing = () => {
   };
 
   const saveSubscriptionOptions = async (paymentId: string) => {
-    const result = await db.insert(userSubscription).values({
+    const result = await db.insert(UserSubscription).values({
       email: user?.primaryEmailAddress?.emailAddress,
       userName: user?.fullName,
       active: true,
@@ -390,9 +393,17 @@ const billing = () => {
                     </span>
                   </li>
                 </ul>
-                <Button onClick={() => createSubscription()} disabled={loading}>
-                  {loading && <Loader2Icon className="animate-spin" />}Get
-                  Started
+                <Button
+                  className={
+                    userSubscription
+                      ? "bg-white, text-primary, border border-primary"
+                      : "bg-primary, text-white"
+                  }
+                  onClick={() => createSubscription()}
+                  disabled={loading}
+                >
+                  {loading && <Loader2Icon className="animate-spin" />}{" "}
+                  {userSubscription ? "Active Plan" : "Get Started"}
                 </Button>
               </div>
             </div>
