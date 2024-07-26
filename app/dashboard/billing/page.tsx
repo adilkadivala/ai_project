@@ -52,9 +52,11 @@ const billing = () => {
   };
 
   const saveSubscriptionOptions = async (paymentId: string) => {
+    const email = user?.primaryEmailAddress?.emailAddress || "";
+
     const result = await db.insert(UserSubscription).values({
-      email: user?.primaryEmailAddress?.emailAddress,
-      userName: user?.fullName,
+      email: email,
+      userName: user?.fullName || "",
       active: true,
       paymentId: paymentId,
       joinDate: moment().format("DD/MM/YYYY"),
