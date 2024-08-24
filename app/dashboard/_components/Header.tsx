@@ -1,5 +1,4 @@
 import { UserButton } from "@clerk/nextjs";
-import { Search } from "lucide-react";
 import React from "react";
 
 const Header = () => {

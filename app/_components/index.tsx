@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import HeroSection from "./Hero";
 import Footer from "./Footer";
 import Workflow from "./Workflow";
-import Pricing from "./Pricing";
+import Feature from "./Feature";
 
 const LandingPage = () => {
   return (
@@ -11,7 +11,7 @@ const LandingPage = () => {
       <Navbar />
       <HeroSection />
       <Workflow />
-      <Pricing />
+      <Feature />
       <Footer />
     </div>
   );

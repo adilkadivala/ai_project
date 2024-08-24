@@ -13,9 +13,7 @@ import { UserSubscriptionContext } from "@/app/(context)/UserSubscriptionContext
 const billing = () => {
   const [loading, setLoading] = useState(false);
   const { user } = useUser();
-  const { userSubscription, setUserSubscription } = useContext(
-    UserSubscriptionContext
-  );
+  const { userSubscription } = useContext(UserSubscriptionContext);
 
   const createSubscription = () => {
     setLoading(true);

@@ -64,7 +64,9 @@ async function History() {
           <TableCaption>A list of your generated stuff.</TableCaption>
           <TableHeader>
             <TableRow className="text-right">
-              <TableHead className="w-[100px] font-extrabold">Number</TableHead>
+              <TableHead className="w-[100px] font-extrabold">
+                Template
+              </TableHead>
               <TableHead className="w-[100px] font-extrabold">
                 Form Data
               </TableHead>

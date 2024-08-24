@@ -1,28 +1,28 @@
 const HeroSection = () => {
   return (
-    <div className="flex flex-col items-center mt-6 lg:mt-20">
-      <h1 className="text-4xl sm:text-6xl lg:text-7xl text-center tracking-wide">
-        VirtualR build tools
-        <span className="bg-gradient-to-br top-0 from-purple-500 via-purple-700 to-blue-600 text-transparent bg-clip-text">
-          {" "}
-          for developers
-        </span>
-      </h1>
-      <p className="mt-10 text-lg text-center text-neutral-500 max-w-4xl">
-        Empower your creativity and bring your VR app ideas to life with our
-        intuitive development tools. Get started today and turn your imagination
-        into immersive reality!
-      </p>
-      <div className="flex justify-center my-10">
-        <a
-          href="#"
-          className="bg-gradient-to-br top-0 from-purple-500 via-purple-700 to-blue-600 py-3 px-4 mx-3 rounded-md"
-        >
-          Start for free
-        </a>
-        <a href="#" className="py-3 px-4 mx-3 rounded-md border">
-          Documentation
-        </a>
+    <div className="relative overflow-hidden before:absolute before:top-0 before:start-1/2 before:bg-[url('https://preline.co/assets/svg/examples/squared-bg-element.svg')] before:bg-no-repeat before:bg-top before:size-full before:-z-[1] before:transform before:-translate-x-1/2">
+      <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10">
+        <div className="flex justify-center">
+          <a
+            className="inline-flex items-center gap-x-2 bg-white border border-gray-200 text-xs text-gray-600 p-2 px-3 rounded-full transition hover:border-gray-300 focus:outline-none focus:border-gray-300"
+            href="#"
+          >
+            Explore the Capital Product
+          </a>
+        </div>
+
+        <div className="mt-5 max-w-xl text-center mx-auto">
+          <h1 className="block font-bold text-gray-800 text-4xl md:text-5xl lg:text-6xl">
+            Supercharged Preline Experience
+          </h1>
+        </div>
+
+        <div className="mt-5 max-w-3xl text-center mx-auto">
+          <p className="text-lg text-gray-600">
+            Preline is a large open-source project, crafted with Tailwind CSS
+            framework by Hmlstream.
+          </p>
+        </div>
       </div>
     </div>
   );
