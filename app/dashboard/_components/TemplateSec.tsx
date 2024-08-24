@@ -25,9 +25,7 @@ const TemplateSec = ({ userSearchInput }: any) => {
   useEffect(() => {
     if (userSearchInput) {
       const filterData = Templates.filter((item) =>
-        item.name
-          .toLowerCase()
-          .includes(userSearchInput.toLowerCase())
+        item.name.toLowerCase().includes(userSearchInput.toLowerCase())
       );
 
       setTemplateList(filterData);
@@ -37,9 +35,9 @@ const TemplateSec = ({ userSearchInput }: any) => {
   }, [userSearchInput]);
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 p-5">
+    <div className="flex flex-wrap gap-5 p-5 justify-start">
       {templateList.map((item: TEMPLATE, index: number) => (
-        <TemplateCard {...item} />
+        <TemplateCard key={index} {...item} />
       ))}
     </div>
   );

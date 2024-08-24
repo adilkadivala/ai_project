@@ -30,13 +30,11 @@ const CreateNewContent = (props: PROPS) => {
 
   const { user } = useUser();
 
-  const { totalUsage, setTotalUsage } = useContext(TotalUsageContext);
+  const { totalUsage } = useContext(TotalUsageContext);
   const { userSubscription, setUserSubscription } = useContext(
     UserSubscriptionContext
   );
-  const { updateUsageCredit, setUpdateUsageCredit } = useContext(
-    UpdateCreditUsageContext
-  );
+  const { setUpdateUsageCredit } = useContext(UpdateCreditUsageContext);
 
   if (totalUsage >= 10000 && !userSubscription) {
     console.log("Please Upgrade");
@@ -56,7 +54,6 @@ const CreateNewContent = (props: PROPS) => {
     const finelAiPrompt = JSON.stringify(formdata) + "," + SelectedPrompt;
     const result = await chatSession.sendMessage(finelAiPrompt);
 
-    console.log(result.response.text());
     setAiOutPut(result?.response.text());
     await SaveInDb(formdata, selectedTemplate?.slug, result?.response.text());
     setLoading(false);
@@ -71,7 +68,6 @@ const CreateNewContent = (props: PROPS) => {
       createdBy: user?.primaryEmailAddress?.emailAddress ?? "",
       createdAt: moment().format("DD/MM/YYYY"),
     });
-    console.log(result);
   };
 
   return (
