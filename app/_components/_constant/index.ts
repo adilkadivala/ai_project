@@ -1,22 +1,22 @@
 export const checklistItems = [
   {
-    title: "Code merge made easy",
+    title: "choose one template",
     description:
-      "Track the performance of your VR apps and gain insights into user behavior.",
+      "choose a template according your needs",
   },
   {
-    title: "Review code without worry",
+    title: "give a prompt for your work",
     description:
-      "Track the performance of your VR apps and gain insights into user behavior.",
+      "choose a propmt for your content",
   },
   {
-    title: "AI Assistance to reduce time",
+    title: "add additional keywords",
     description:
-      "Track the performance of your VR apps and gain insights into user behavior.",
+      "it will help you to make you content more as your mind",
   },
   {
-    title: "Share work in minutes",
+    title: "copy and share",
     description:
-      "Track the performance of your VR apps and gain insights into user behavior.",
+      "edit if you want and simply copy and paste",
   },
 ];

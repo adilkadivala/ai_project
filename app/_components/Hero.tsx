@@ -7,20 +7,21 @@ const HeroSection = () => {
             className="inline-flex items-center gap-x-2 bg-white border border-gray-200 text-xs text-gray-600 p-2 px-3 rounded-full transition hover:border-gray-300 focus:outline-none focus:border-gray-300"
             href="#"
           >
-            Explore the Capital Product
+            Transform Your Content Creation with AI
           </a>
         </div>
 
         <div className="mt-5 max-w-xl text-center mx-auto">
           <h1 className="block font-bold text-gray-800 text-4xl md:text-5xl lg:text-6xl">
-            Supercharged Preline Experience
+            Create Your Content with the help of
+            <br className="hidden sm:block" />
+            <span className="block text-indigo-600">AI </span>
           </h1>
         </div>
 
         <div className="mt-5 max-w-3xl text-center mx-auto">
           <p className="text-lg text-gray-600">
-            Preline is a large open-source project, crafted with Tailwind CSS
-            framework by Hmlstream.
+           one-click content creation tool that uses the power of AI to generate content for you.
           </p>
         </div>
       </div>

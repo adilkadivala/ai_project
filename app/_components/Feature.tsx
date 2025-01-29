@@ -10,11 +10,11 @@ const Feature = () => {
               Features
             </span>
             <h2 className="text-4xl text-center font-bold text-gray-900 py-5">
-              Revolutionary Features
+              fantastic Features
             </h2>
             <p className="text-lg font-normal text-gray-500 max-w-md md:max-w-2xl mx-auto">
-              Provides advanced features like time tracking, integrating with
-              third party apps (calendar / Google drive), creating subtasks.
+              Provides multiple templates like blog post, youtube title, code generator
+
             </p>
           </div>
           <div className="flex justify-center items-center gap-x-5 gap-y-8 lg:gap-y-0 flex-wrap md:flex-wrap lg:flex-nowrap lg:flex-row lg:justify-between lg:gap-x-8">
@@ -38,10 +38,10 @@ const Feature = () => {
                 </svg>
               </div>
               <h4 className="text-lg font-medium text-gray-900 mb-3 capitalize">
-                Revolutionary Projectview
+                choose a template
               </h4>
               <p className="text-sm font-normal text-gray-500">
-                plan and structure work how you want. Quickly organizing tasks.
+                choose a template for your content creation
               </p>
             </div>
             <div className="relative w-full text-center max-md:max-w-sm max-md:mx-auto group md:w-2/5 lg:w-1/4">
@@ -77,11 +77,10 @@ const Feature = () => {
                 </svg>
               </div>
               <h4 className="text-lg font-medium text-gray-900 mb-3 capitalize">
-                App Integrations
+               give prompt 
               </h4>
               <p className="text-sm font-normal text-gray-500">
-                Bring all your tools and data together. Also join with hundreds
-                of other apps.
+                give your prompt to the AI and get the content generated
               </p>
             </div>
             <div className="relative w-full text-center max-md:max-w-sm max-md:mx-auto group md:w-2/5 lg:w-1/4">
@@ -103,11 +102,10 @@ const Feature = () => {
                 </svg>
               </div>
               <h4 className="text-lg font-medium text-gray-900 mb-3 capitalize">
-                Data Reporting
+                keyword adding
               </h4>
               <p className="text-sm font-normal text-gray-500">
-                Get real time insight into progress and allows teams to track
-                their work habits
+                add keywords to the content to make it more SEO friendly
               </p>
             </div>
             <div className="relative w-full text-center max-md:max-w-sm max-md:mx-auto group md:w-2/5 lg:w-1/4">
@@ -129,11 +127,10 @@ const Feature = () => {
                 </svg>
               </div>
               <h4 className="text-lg font-medium text-gray-900 mb-3 capitalize">
-                Workflow Builder
+                ready to copy
               </h4>
               <p className="text-sm font-normal text-gray-500">
-                Automated processes to coordinate your teams and increase
-                communication.
+                copy the content and use it in your blog or website or anywhere
               </p>
             </div>
           </div>

@@ -7,9 +7,9 @@ const Workflow = () => {
   return (
     <div className="mt-20">
       <h2 className="text-xl font-semibold sm:text-5xl lg:text-6xl text-center mt-6 tracking-wide">
-        Accelerate your
+        Accelerate your {" "}
         <span className="bg-gradient-to-br top-0 from-purple-500 via-purple-700 to-blue-600 text-transparent bg-clip-text">
-          coding workflow.
+        social media growth
         </span>
       </h2>
       <div className="flex flex-wrap justify-center">
