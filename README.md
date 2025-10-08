@@ -1,4 +1,3 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 
 ## Create an .env file and fill out this all fields
@@ -22,6 +21,14 @@ put them in .env
 ## Getting Started
 
 First, run the development server:
+
+```bash
+
+  npm run db:generate
+  npm run db:push
+  npm run db:studio
+
+```
 
 ```bash
 npm run dev

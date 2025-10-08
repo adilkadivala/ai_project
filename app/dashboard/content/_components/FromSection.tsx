@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import { TEMPLATE } from "../../_components/TemplateSec";
 import Image from "next/image";
@@ -27,7 +28,6 @@ const FromSection = ({ selectedTemplate, userFormInput, loading }: PROPS) => {
   const onSubmit = (e: any) => {
     e.preventDefault();
     userFormInput(formData);
-    console.log(formData);
   };
 
   return (
@@ -41,7 +41,7 @@ const FromSection = ({ selectedTemplate, userFormInput, loading }: PROPS) => {
 
       <form className="mt-6" onSubmit={onSubmit}>
         {selectedTemplate?.form?.map((item, index) => (
-          <div className="my-2 flex flex-col gap-2 mb-7">
+          <div className="my-2 flex flex-col gap-2 mb-7" key={index}>
             <label className="font-bold">{item.label}</label>
             {item.field == "input" ? (
               <Input

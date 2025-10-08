@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Copy } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -13,17 +15,19 @@ const OutPutSection = ({ aiOutPut }: props) => {
   const editorRef: any = useRef();
   const [copySuccess, setCopySuccess] = useState("");
 
-  useEffect(() => {
+useEffect(() => {
+  if (editorRef.current) {
     const editorInterface = editorRef.current.getInstance();
     editorInterface.setMarkdown(aiOutPut);
-  }, [aiOutPut]);
+  }
+}, [aiOutPut]);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(aiOutPut).then(() => {
       setCopySuccess("Copied");
       setTimeout(() => setCopySuccess("Copy"), 2000);
     });
-  };    
+  };
 
   return (
     <div className="bg-white shadow-lg border rounded-lg ">
