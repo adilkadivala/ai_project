@@ -72,10 +72,11 @@ const CreateNewContent = (props: PROPS) => {
 
   return (
     <div className="p-5">
-      <Link href={"/dashboard"}></Link>
-      <Button>
-        <ArrowLeft />
-        Back
+      <Button asChild>
+        <Link href={"/dashboard"}>
+          <ArrowLeft />
+          Back
+        </Link>
       </Button>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 py-5">
         {/* from section */}

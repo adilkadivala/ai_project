@@ -15,15 +15,36 @@ const OutPutSection = ({ aiOutPut }: props) => {
   const editorRef: any = useRef();
   const [copySuccess, setCopySuccess] = useState("");
 
-useEffect(() => {
-  if (editorRef.current) {
-    const editorInterface = editorRef.current.getInstance();
-    editorInterface.setMarkdown(aiOutPut);
-  }
-}, [aiOutPut]);
+  useEffect(() => {
+    if (editorRef.current) {
+      const editorInterface = editorRef.current.getInstance();
+      editorInterface.setMarkdown(aiOutPut);
+      editorInterface.removeToolbarItem("code");
+      editorInterface.removeToolbarItem("codeblock");
+      editorInterface.removeToolbarItem("table");
+      editorInterface.removeToolbarItem("image");
+    }
+  }, [aiOutPut]);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(aiOutPut).then(() => {
+    if (!editorRef.current) return;
+
+    const editorInstance = editorRef.current.getInstance();
+    const htmlContent = editorInstance.getHTML();
+
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = htmlContent;
+
+    // Convert <a href="...">text</a> → text (URL)
+    tempDiv.querySelectorAll("a").forEach((a) => {
+      const text = a.textContent;
+      const href = a.getAttribute("href");
+      a.replaceWith(`${text} (${href})`);
+    });
+
+    const plainText = tempDiv.innerText;
+
+    navigator.clipboard.writeText(plainText).then(() => {
       setCopySuccess("Copied");
       setTimeout(() => setCopySuccess("Copy"), 2000);
     });
