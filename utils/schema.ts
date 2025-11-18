@@ -1,15 +1,7 @@
-import {
-  boolean,
-  integer,
-  pgTable,
-  serial,
-  text,
-  uuid,
-  varchar,
-} from "drizzle-orm/pg-core";
+import { boolean, pgTable, text, uuid, varchar } from "drizzle-orm/pg-core";
 
 export const AIOutput = pgTable("aiOutput", {
-  id: uuid("uuid1").defaultRandom().primaryKey(),
+  id: uuid("id").defaultRandom().primaryKey(),
   createdBy: varchar("createdBy").notNull(),
   formData: text("formData").notNull(),
   aiResponse: text("aiResponse").notNull(),
@@ -18,7 +10,7 @@ export const AIOutput = pgTable("aiOutput", {
 });
 
 export const UserSubscription = pgTable("userSubscription", {
-  id: uuid("uuid1").defaultRandom().primaryKey(),
+  id: uuid("id").defaultRandom().primaryKey(),
   email: varchar("email").notNull(),
   userName: varchar("userName"),
   active: boolean("active"),

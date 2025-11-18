@@ -17,7 +17,7 @@ declare global {
   }
 }
 
-export const PricingCard = ({
+export const  PricingCard = ({
   title,
   price,
   period,
